@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% load static %}
+    <title>SignUp Form</title>
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,300" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{% static 'js/signupform.js' %}"></script>
+</head>
+<body>
+    <form action="/signup" method="POST">
+        <h1>Sign Up</h1>
+        {% csrf_token %}
+        <fieldset>
+
+            <legend><span class="section">2</span>Your Profile Info</legend>
+            {% if sucess_msg %}
+            <br/><br/>
+            {{ sucess_msg }}
+            {% endif %}
+            <br/><br/>
+            <label class="" for="name">First Name:</label>
+            <input type="text" name="firstName">
+
+            <label class="" for="name">Last Name:</label>
+            <input type="text" name="lastName">
+
+            <label class="" for="User-Name">User Name:</label>
+            <input type="text" name="UserName" required>
+
+            <label class="mail" for="email">Email:</label>
+            <input type="email" name="Email" id="mail" required>
+
+            <label class="" for="password">Password:</label>
+            <input type="password" name="Password" id="password" required>
+
+            <label class="" for="confirm_password">Confirm Password:</label>
+            <input type="password" name="Password" id="confirm_password" onkeyup="check(this)" required>
+            <error id="alert"></error>
+
+            <label class="" for="normalUser">Normal User </label>
+            <input type="radio" name="userType" value="normalUser" required>
+            <label class="" for="superUser">Super User </label>
+            <input type="radio" name="userType" value="superUser" required>
+            <br />
+
+        </fieldset>
+
+        <button type="submit">Sign Up</button>
+
+    </form>
+</body>
+</html>
